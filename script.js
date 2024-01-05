@@ -1,21 +1,31 @@
+function calculateNetSalary(basicSalary, benefits) {
+    const KRA_RATES = [
+        [0, 0.16],
+        [9440, 0.17],
+        [16440, 0.18],
+        [21440, 0.19],
+        [24440, 0.20],
+        [Infinity, 0.21],
+    ];
 
-    function calculateNetSalary() {
-        // Get input values
-        const basicSalary = parseFloat(document.getElementById('basic-salary').value);
-        const benefits = parseFloat(document.getElementById('benefits').value);
+    const NHIF_RATE = 0.04;
+    const NSSF_RATE = 0.08;
 
-        // Calculate payee, NHIF deductions, gross salary, and net salary
-        const tax = (basicSalary + benefits) * 0.1;
-        const nhifDeductions = (basicSalary + benefits) * 0.05;
-        const grossSalary = basicSalary + benefits - tax - nhifDeductions;
-        const netSalary = grossSalary - tax - nhifDeductions;
-
-        // Display results
-        const results = document.getElementById('results');
-        results.innerHTML = `
-            <p>Payee (Tax): <strong>${tax.toFixed(2)}</strong></p>
-            <p>NHIF Deductions: <strong>${nhifDeductions.toFixed(2)}</strong></p>
-            <p>Gross Salary: <strong>${grossSalary.toFixed(2)}</strong></p>
-            <p>Net Salary: <strong>${netSalary.toFixed(2)}</strong></p>
-        
+    let totalIncome = basicSalary + benefits;
+    let payee = 0;
+    for (let i = 0; i < KRA_RATES.length; i++) {
+        if (totalIncome <= KRA_RATES[i][0]) {
+            payee = totalIncome * KRA_RATES[i][1];
+            break;
+        }
     }
+
+    let NHIFDeductions = totalIncome * NHIF_RATE;
+    let NSSFDeductions = totalIncome * NSSF_RATE;
+    let grossSalary = totalIncome - payee - NHIFDeductions - NSSFDeductions;
+    let netSalary = grossSalary - payee - NHIFDeductions - NSSFDeductions;
+
+    return netSalary;
+}
+
+console.log(calculateNetSalary(30000, 5000)); // 20800
