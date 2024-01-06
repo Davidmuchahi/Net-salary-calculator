@@ -30,4 +30,4 @@ function calculateNetSalary(basicSalary, benefits) {
 
     document.getElementById("netSalary").value = netSalary;
 }
-// 20800
+
