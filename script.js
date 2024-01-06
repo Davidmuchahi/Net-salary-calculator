@@ -1,4 +1,7 @@
 function calculateNetSalary(basicSalary, benefits) {
+    var basicSalary = parseFloat(document.getElementById("basicSalary").value);
+    var benefits = parseFloat(document.getElementById("benefits").value);
+   
     const KRA_RATES = [
         [0, 0.16],
         [9440, 0.17],
@@ -27,5 +30,4 @@ function calculateNetSalary(basicSalary, benefits) {
 
     return netSalary;
 }
-
-console.log(calculateNetSalary(30000, 5000)); // 20800
+// 20800
