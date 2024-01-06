@@ -28,6 +28,6 @@ function calculateNetSalary(basicSalary, benefits) {
     let grossSalary = totalIncome - payee - NHIFDeductions - NSSFDeductions;
     let netSalary = grossSalary - payee - NHIFDeductions - NSSFDeductions;
 
-    return netSalary;
+    document.getElementById("netSalary").value = netSalary;
 }
 // 20800

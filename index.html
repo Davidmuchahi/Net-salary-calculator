@@ -5,18 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
     <title>Group 9 Net Salary Calculator</title>
  </head>
  <body>
-    <div class="calculator">
-        <h2>Net Salary Calculator</h2>
-        <input type="number" id="basicSalary" placeholder="Basic Salary">
-        <input type="number" id="benefits" placeholder="Benefits">
-        <button onclick="calculateNetSalary()">Calculate</button>
-        <p id="netSalary"></p>
-    </div>
+    <form>
+        <label for="basicSalary">Basic Salary:</label>
+        <input type="number" id="basicSalary" required>
+        <br>
+        <label for="benefits">Benefits:</label>
+        <input type="number" id="benefits" required>
+        <br>
+        <label for="netSalary">Net Salary:</label>
+        <input type="number" id="netSalary" readonly>
+        <br>
+        <button type="button" onclick="calculateNetSalary()">Calculate</button>
+    </form>
 
-    <script src="script.js"></script>
+   
 </body>
 </html>
  </body>
